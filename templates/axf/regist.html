@@ -1,0 +1,126 @@
+{% extends 'axf/base.html' %}
+{% load static from staticfiles %}
+
+{% block linkscript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mine/css/regist.css' %}"/>
+    <script type="text/javascript" charset="utf-8" src="{% static 'mine/js/regist.js' %}" ></script>
+{% endblock linkscript %}
+
+
+{% block base %}
+
+
+<div id="register">
+    <div id="header">
+        <a href="/mine/"><p>返回</p></a>
+    </div>
+
+    <form class="form-horizontal" action="/regist/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="input-group">
+            <span class="input-group-addon">账号</span>
+            <input id="account" type="text" class="form-control" placeholder="账号长度至少为6"
+            aria-describedby="basic-addon1" name="useraccount">
+        </div>
+        <span id="accunterr" class="error">账号格式输入错误</span>
+        <span id="checker" class="error">账号已经被占用</span>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">密码</span>
+            <input id="pass" type="password" class="form-control" placeholder="密码长度至少为6"
+            aria-describedby="basic-addon1" name="userpass">
+        </div>
+        <span id="passerr" class="error">密码格式输入错误</span>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">密码验证</span>
+            <input id="passwd" type="password" class="form-control" placeholder="密码长度至少为6"
+            aria-describedby="basic-addon1" name="userpasswd">
+        </div>
+        <span id="passwderr" class="error">两次密码输入不同</span>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">昵称</span>
+            <input type="text" class="form-control"
+            aria-describedby="basic-addon1" name="username">
+        </div>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">电话</span>
+            <input type="text" class="form-control"
+            aria-describedby="basic-addon1" name="userphone">
+        </div>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">地址</span>
+            <input type="text" class="form-control"
+            aria-describedby="basic-addon1" name="useradderss">
+        </div>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">头像</span>
+            <input type="file" class="form-control"
+            aria-describedby="basic-addon1" name="userimg">
+        </div>
+        <br>
+
+        <div class="input-group">
+            <span class="input-group-addon">注册</span>
+            <input  type="submit" class="form-control"
+            aria-describedby="basic-addon1" value="注册">
+        </div>
+        <br>
+
+
+    </form>
+
+
+
+
+</div>
+
+
+
+{#    <div class="container">#}
+{##}
+{#        <form method="post" action="" enctype="multipart/form-data" onsubmit="return check_input()">#}
+{#         <form method="post" action="" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="exampleInputEmail1">用户</label>#}
+{#                <input id="username" type="text" name="username" class="form-control" placeholder="用户名">#}
+{#                <span id="username_info"></span>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="exampleInputEmail1">邮箱</label>#}
+{#                <input type="email" name="email" class="form-control" placeholder="邮箱">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="exampleInputPassword1">密码</label>#}
+{#                <input id="password" type="text" name="password" class="form-control" placeholder="密码">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="exampleInputPassword1">确认密码</label>#}
+{#                <input id="password_confirm" type="text" class="form-control" placeholder="确认密码">#}
+{#                <span id="password_confirm_info"></span>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="exampleInputFile">头像</label>#}
+{#                <input name="icon" type="file">#}
+{#            </div>#}
+{##}
+{#            <input type="submit" class="btn btn-success btn-block" value="注册">#}
+{#        </form>#}
+{##}
+{##}
+{#    </div>#}
+
+
+{% endblock base %}

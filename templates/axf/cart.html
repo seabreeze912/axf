@@ -1,0 +1,116 @@
+{% extends 'axf/base.html' %}
+{% load static from staticfiles %}
+
+
+{% block linkscript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cart/css/cart.css' %}"/>
+    <script type="text/javascript" charset="utf-8" src="{% static 'cart/js/cart.js' %}" ></script>
+{% endblock linkscript %}
+
+
+{% block base %}
+
+<div id="cart">
+    <h3><b>购物车</b></h3>
+
+    <div class="full">
+        <section>
+            <ul>
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">收货人<b></b></p><p>:<span>sunck</span></p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">
+                            电话<b></b></p><p>:<span>8008208820</span>
+                            <a class="change">修改</a>
+                        </p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="clear">
+                        <p class="infoJustify">收货地址<b></b></p><p>:<span>宝胜北里西区28号天丰利商城</span></p>
+                    </div>
+                </li>
+            </ul>
+
+
+            <div class="bill">
+                    <p>闪送超市</p>
+                    <a href="#">凑单专区</a>
+                    <p>满100减99</p>
+            </div>
+
+
+            <p class="delivery">
+                    <span>收货时间:</span>
+                    <span>一小时送达</span>
+                    <a href="#">可送达&gt;</a>
+            </p>
+
+
+            <p class="delivery">
+                <span>留言:</span>
+                <input type="text" placeholder="有什么特殊需求">
+            </p>
+
+
+            <menu>
+                <ul>
+                    {% for item in cartslist %}
+                    <li class="menuList">
+                        <div class="confirm">
+                            <span class="ischose" goodsid="{{ item.productid }}">
+                                <span id="{{ item.proudctid }}a">
+                                    {% ifequal True item.isChose %}
+                                    √
+                                    {% endifequal %}
+                                </span>
+                            </span>
+                        </div>
+
+                        <a href="#">
+                            <img src="{{ item.productimg }}">
+                            <p>{{ item.productname }}</p>
+                            <span class="{{ productprice }}"></span>
+                        </a>
+
+                        <section>
+                            <button class="subShopping" ga="{{ item.productid }}">-</button>
+                            <span id="{{ item.productid }}">{{ item.productnum }}</span>
+                            <button class="addShopping" ga="{{ item.productid }}">+</button>
+                        </section>
+                    </li>
+                    {% endfor %}
+
+                    <li class="payTheBill">
+                        <div class="confirm">
+                            <span></span>
+                            {% if trueFlag %}
+                            √
+                            {% endif %}
+                            <span></span>
+                        </div>
+
+                        <p>
+                            <span>全选</span>
+                            <span>共计：</span>
+                            <span>总价</span>
+                        </p>
+
+                        <a id="ok">选好了</a>
+                    </li>
+
+                </ul>
+
+            </menu>
+
+        </section>
+    </div>
+</div>
+
+{% endblock base %}
